@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="card bg-default text-black mb-4" style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;">Total Markets <br><br> <strong>({{totalMarket}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_market' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;">Total Stores <br><br> <strong>({{totalStores}})</strong> </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_programconfig' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;">Accurate Stores <br><br> <strong>({{totalAccurated}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'statusdetails' pk=2 %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;"> Accurate but not consistant <br> <strong>({{accurateButNotConsistent}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'statusdetails' pk=3 %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;">Accurate but still camera angle issue <br> <strong>({{accurateButStillCameraIssue}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'statusdetails' pk=5 %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;  text-align:center;">
+            <div class="card-body" style="padding:5px;">Inaccurate due to camera angle <br> <strong>({{NotAccurateduetoCameraangle}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'statusdetails' pk=4 %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-default text-black mb-4" style="background-color:#f7f7f7;">
+            <div class="card-body">Total Markets <strong>({{totalMarket}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_market' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;">
+            <div class="card-body">Total Stores <strong>({{totalStores}})</strong> </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_programconfig' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;">
+            <div class="card-body">Accurate Stores <strong>({{totalAccurated}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_programconfig' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card  text-black mb-4"  style="background-color:#f7f7f7;">
+            <div class="card-body">Inaccurate Stores <strong>({{totalNoneAccurated}})</strong></div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-black stretched-link" href="{% url 'create_programconfig' %}">View Details</a>
+                <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

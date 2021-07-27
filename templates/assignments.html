@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+    .card-body-custom {
+            flex: 0 0 auto !important;
+            min-height: 0px !important;
+            padding: 0 !important;
+            height: 0px !important;
+            overflow: hidden !important;
+    }
+    .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    height: auto;
+    transition: 0.5s;
+}
+.popup {
+    margin-left: 125px;
+    position: absolute;
+    background: red;
+    height: 100px;
+    padding: 20px;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+
+        <div class="card mb-4">
+            <div class="card-header" style="font-size:20px;">
+                <i class="fas fa-table mr-1"></i>
+                Add New Task  <span style="float: right; cursor: pointer;" class="add_config_btn btn btn-primary">Add New  <input type="checkbox" style="display: none;" class="add_config_btn_check"></span>
+            </div>
+            <div class="card-body card-body-hide  {% if not form.errors and not edit_form %} card-body-custom {% endif %}">
+                
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{form.project_name|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            {{form.user|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            {{form.assign_date|as_crispy_field}}
+                        </div>   
+                        <div class="col-md-3">
+                            {{form.status|as_crispy_field}}
+                        </div>                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{form.details|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" value="Save Market" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Assigned Project Lists
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="5%">#</th>
+                                <th width="15%">Project Name</th>                                
+                                <th width="15%">Assign To</th>                                
+                                <th width="15%">Assign Date</th>                               
+                                <th width="15%">Status</th>                                
+                               <th width="20%">Action</th>
+                            </tr>
+                        </thead>
+                   
+                        <tbody>
+                            {% for data in assignments %}
+                            <tr>
+                                <td> {{forloop.counter}} </td>
+                                <td> {{data.project_name}} </td>
+                                <td> {{data.user}} | <input type="hidden" value="{{data.pk}}"> <a href="" onclick="event.preventDefault()" class="moveto" data-toggle="modal" data-target="#my-modal"> Move To </a> <input type="hidden" value="{{data.project_name.pk}}"> </td>
+                                <td> {{data.assign_date}}</td>
+                                <td> {% if data.status == '0' %} Pending {% else %} Approved {% endif %} </td>
+                                <td>
+                                    <a href="{% url 'assignment_update' pk=data.pk %}">Edit</a> | 
+                                    <a href="{% url 'assignment_delete' pk=data.pk %}">Delete</a>
+                                </td>
+                            </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form action="{% url 'assignment_update' pk=9 %}" id="moveForm" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="my-modal-title">Move the project to an other developer</h5>
+                            <button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="project_name" class="project_name">
+                            <input type="text" name="status" value="0">
+                            <!-- <input type="date" name="assign_date" class="assign_date" > -->
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="users">Users</label>
+                                        <select id="users" class="form-control" name="user">
+                                            {% for users in users %}
+                                                <option value="{{users.pk}}"> {{users.username}} </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="users">Move Date</label>
+                                        <input type="date" name="assign_date" class="form-control">
+                                    </div>                                    
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="users">Details</label>
+                                        <textarea id="" class="form-control" name="details"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Move Now" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        $('.add_config_btn').click(function(){
+            
+            if($('.add_config_btn_check').is(':checked')){
+                $('.card-body-hide').addClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',false);
+            }else{
+                $('.card-body-hide').removeClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',true);
+            }
+        });
+        $('.moveto').click(function(){
+            project_id = $(this).next('input').val();
+            user_id = $(this).prev('input').val();
+            // alert(user_id);
+            $('.project_name').val(project_id);
+            forms = $('#moveForm').prop('action');
+            forms = forms.split('assignment')
+            $('#moveForm').prop('action',forms[0]+'assignment/'+user_id);
+            assign_date = $(this).parent('td').next('td').text();
+         
+            console.log(assign_date)
+        });
+
+    });
+
+
+
+    function moveTo(e, projectid){
+        e.preventDefault();
+        cursor_width = event.clientX;
+        cursor_height = event.clientY;
+        const mainDiv = document.createElement('div');
+        mainDiv.style.border = 'solid';
+        mainDiv.style.width = 150;
+        mainDiv.style.height = 150;
+        mainDiv.classList.add('popup');
+        const popup = document.getElementById('popup');
+        popup.appendChild(mainDiv);
+        console.log(cursor_width ,cursor_height);
+    }
+</script>
+{% endblock %}
+

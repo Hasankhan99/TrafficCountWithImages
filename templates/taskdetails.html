@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    p.msg{
+        width: auto !important;
+        border: solid 1px !important;
+        padding: 5px !important;
+    }
+    .message{
+        padding: 10px;
+    background: #d0f3e9;
+    width: auto !important;
+    }
+    .maindetail{
+        background: #d0f3e9;
+        padding: 5px;
+        border-top-left-radius: 10px;
+        margin-top: -30px;
+        position: absolute;
+        border-top-right-radius: 10px;
+    }
+    .maindetailotheruser{
+        background: #d0f3e9;
+        padding: 5px;
+        border-top-left-radius: 10px;
+        margin-top: -30px;
+        position: relative;
+        float: right;
+        border-top-right-radius: 10px;
+    }
+    .auther{
+        border-bottom: solid 1px;
+        text-transform: capitalize;
+    }
+    .time{
+        margin-left: 10px;
+    }
+    #chat-log{
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <div class="container-fluid">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol> 
+
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="alert alert-success successBox" style="display: none;"><span class="successMessage"></span></div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>{{projectDetail.project_name}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Request Date</th>
+                                    <th>Initial Date</th>
+                                    <th>Expected Date</th>
+                                    <th>Completed Date</th>
+                                    <th>Progress</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> {{ projectDetail.initiated_date }} </td>
+                                    <td> {{ projectDetail.start_date }} </td>
+                                    <td> {{ projectDetail.expected_date }} </td>
+                                    <td> {{ projectDetail.complete_date }} </td>
+                                    <td> 
+                                        <select id="" class="id_progress form-control">
+                                            {% for i in progress_list %}
+                                                <option value="{{i}}" {% if i == projectAssignedDetail.progress %} selected="selected" {% endif %} >{{i}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input type="hidden" value="{{projectDetail.pk}}">
+                                    </td>
+                                    <td>
+                                        <select id="" class="id_progress form-control">
+                                            {% for i in status_list %}
+                                                <option value="{{i}}" {% if i == projectAssignedDetail.status %} selected="selected" {% endif %} >{{i}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input type="hidden" value="{{projectDetail.pk}}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Detail</b> </td>
+                                    <td colspan="7">
+                                        <b>{{ projectDetail.details }} </b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                
+                                <!-- <form action="{% url 'sendMessage' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="project" value="{{projectDetail.pk}}">
+                                    <input type="hidden" name="user" value="{{user.pk}}">
+                                    <input type="text" name="details" class="form-control" placeholder="Type Message">
+                                     <br>
+                                    <input type="submit" value="send">
+                                </form> -->
+                                <br>
+                                <div >
+                                    <span id="chat-log">
+                                        {% for message in proMessages %}
+                                        <br>
+                                        <span class="{% if message.user.pk == user.pk %}maindetail {% else %} maindetailotheruser {% endif %}"> <span class="auther"> {{message.user}}  </span><span class="time">{{message.send_date}}</span>  </span>
+                                        
+                                        <p class="message">{{message.details}}</p>
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                <!-- <textarea id="" cols="100" rows="5"></textarea><br> -->
+                                <input id="chat-message-input" placeholder="Enter Comment" type="text" class="form-control"><br>
+                                <input id="chat-message-submit" type="button" value="Send" class="btn btn-primary">
+
+                                {{request.session.}}
+                                {{ room_name|json_script:"room-name" }}
+                                {{ user.pk|json_script:"username" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/tasks/'
+        + roomName
+        + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        document.querySelector('#chat-log').innerHTML += ('<p class="message">'+data.message+'</p>');
+        saveMessage(roomName, data.message);
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+        messageInputDom.value = '';
+    };
+
+function saveMessage(projectid, message){
+    const username = '{{user.pk}}';
+    // console.log('user: '+username+' project id: '+ projectid+' message: '+ message)
+    console.log(username)
+    $.ajax({
+           url: "{% url 'sendMessage' %}",
+           type: 'POST',
+            dataType: "json",
+            headers: {
+                'X-CSRFTOKEN': "{{ csrf_token }}",
+            },
+            data: {'user':username, 'project': projectid, 'details':message},
+           success: function(data){
+               console.log(data)
+           },
+           error: function (result) {
+                console.log(result);
+            }
+       });
+}
+
+$(document).ready(function(){
+    var userid = '{{user.pk}}'
+    $('.id_progress').eq(0).change(function(){
+        val = $(this).children('option:selected').val();
+        projectid = $(this).next('input').val();
+        $.ajax({
+           url: "{% url 'progress_task' %}",
+           type: 'POST',
+            dataType: "json",
+            headers: {
+                'X-CSRFTOKEN': "{{ csrf_token }}",
+            },
+            data: {'val': val, 'projectid':projectid, 'varify':'progress','userid':userid},
+           success: function(data){
+               if(data.data){
+                   $('.successBox').show();
+                   $('.successMessage').text('Project Progress has been updated successfully!');
+
+                   setTimeout(()=>{
+                        $('.successBox').hide();
+                   }, 4000);
+               }else{
+                $('.successBox')
+                .removeClass('alert-success')
+                .addClass('alert-danger')
+                .show();
+                $('.successMessage').text('Opps! there is an error! please try again. or contact to Administrator');
+
+               }
+           },
+           error: function (result) {
+                console.log(result);
+            }
+       });
+    });
+    $('.id_progress').eq(1).change(function(){
+        val = $(this).children('option:selected').val();
+        projectid = $(this).next('input').val();
+        $.ajax({
+           url: "{% url 'progress_task' %}",
+           type: 'POST',
+            dataType: "json",
+            headers: {
+                'X-CSRFTOKEN': "{{ csrf_token }}",
+            },
+            data: {'val': val, 'projectid':projectid, 'varify':'status','userid':userid},
+           success: function(data){
+               if(data.data){
+                   $('.successBox').show();
+                   $('.successMessage').text('Project Status has been updated successfully!');
+
+                   setTimeout(()=>{
+                        $('.successBox').hide();
+                   }, 4000);
+               }else{
+                $('.successBox')
+                .removeClass('alert-success')
+                .addClass('alert-danger')
+                .show();
+                $('.successMessage').text('Opps! there is an error! please try again. or contact to Administrator');
+
+               }
+           },
+           error: function (result) {
+                console.log(result);
+            }
+       });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+    .card-body-custom {
+            flex: 0 0 auto !important;
+            min-height: 0px !important;
+            padding: 0 !important;
+            height: 0px !important;
+            overflow: hidden !important;
+    }
+    .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    height: auto;
+    transition: 0.5s;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+{% include 'storeInfoformisreport.html' %}
+
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                List of Status <span><a href="{% url 'export_filtered' pk=currentpk %}"> Export Current Filtered Stores </a></span> 
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="7%">Market Name</th>
+                                <th width="7%">Store Name</th>
+                                <th width="7%">Store UID</th>
+                                <th width="7%">Store Channel</th>
+                                <!-- <th width="7%">Conf</th> -->
+                                <!-- <th width="7%">Thresh</th> -->
+                                <!-- <th width="7%">No Snaps</th> -->
+                                <th width="7%">Status</th>
+                               <th width="7%">Action</th>
+
+                            </tr>
+                        </thead>
+                   
+                        <tbody>
+                            {% for data in storeStatusData %}
+                            <tr>
+                                <td> {{data.market}} </td>
+                                <td> {{data.store_name}} </td>
+                                <td> {{data.store_unique_id}} </td>
+                                <td> {{data.store_channel}} </td>
+                                <!-- <td> {{data.conf}} </td> -->
+                                <!-- <td> {{data.thresh}} </td> -->
+                                <!-- <td> {{data.number_of_snaps}} </td> -->
+                                <!-- <td> {% if data.device == ' ' %} GPU {% else %} CPU {% endif %} </td> -->
+                                <td> {{data.current_status}} </td>
+                                <td>
+                                    <a href="{% url 'update_programconfig' pk=data.pk %}">Edit</a> | 
+                                    <a href="{% url 'delete_programconfig' pk=data.pk %}">Delete</a>
+                                </td>
+                            </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+   
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        $('.add_config_btn').click(function(){
+            
+            if($('.add_config_btn_check').is(':checked')){
+                $('.card-body-hide').addClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',false);
+            }else{
+                $('.card-body-hide').removeClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',true);
+            }
+        });
+    });
+</script>
+{% endblock %}

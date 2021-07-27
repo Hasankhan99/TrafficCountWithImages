@@ -1,0 +1,386 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+    .card-body-custom {
+            flex: 0 0 auto !important;
+            min-height: 0px !important;
+            padding: 0 !important;
+            height: 0px !important;
+            overflow: hidden !important;
+    }
+    .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    height: auto;
+    transition: 0.5s;
+}
+</style>
+{% endblock %}
+{% block body %}
+{% include 'info.html' %}
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form action="{% url 'importstores' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="my-modal-title">Select Stores file (.csv)</h5>
+                            <button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="file" id="id_storefile" name="storefile" class="btn btn-primary">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Upload Data" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header" style="font-size:20px;">
+                <i class="fas fa-table mr-1"></i>
+                Add Cams Configuration 
+                <span><a href="{% url 'exportstores' %}">Export All Stores</a></span> |
+                <span><a href="{% url 'importstores' %}" onclick="event.preventDefault();"  data-toggle="modal" data-target="#my-modal">Import All Stores</a></span>
+                <span style="float: right; cursor: pointer;" class="add_config_btn btn btn-primary">Add New  <input type="checkbox" style="display: none;" class="add_config_btn_check"></span>
+            </div>
+            <div class="card-body card-body-hide  {% if not form.errors and not edit_form %} card-body-custom {% endif %}">
+                
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{form.market|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            <span style="display: none;">{{edit_form}}</span>
+                            {{form.store_name|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            {{form.store_unique_id|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            {{form.store_channel|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <input type="submit" value=""> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{form.number_of_snaps|as_crispy_field}}
+                        </div>
+                        <div class="col-md-3">
+                            {{form.device|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.time|as_crispy_field}}
+                        </div>
+                       
+                        <div class="col-md-2">
+                            {{form.conf|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.thresh|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{form.current_status|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.server_name|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.hourly_api|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.total_api|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                            {{form.status|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="display: none;">
+                            {{form.snaps_path|as_crispy_field}}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                List of Cams Configuration 
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-success"> Total Active Store: <strong> ({{allStoresOn}}) </strong> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-danger">Total Inactive Store: <strong> ({{allStoresOff}}) </strong> </div>
+                        </div>
+                    </div>
+                   <div class="row">
+                    <div class="col-md-2">
+                        <input type="submit" value="Save Changes" class="btn btn-primary changeStatusForm" style="margin: 0 0 10px 0;">
+                    </div>
+                    <div class="col-md-3">
+
+                        <select name="" id="" class="form-control changeStatusBox" aria-placeholder="DDDDDD" placeholder="dddddddd">
+                            <option value="1">ON</option>
+                            <option value="0">OFF</option>
+                        </select>
+                        <!-- <input type="text" value=""  placeholder="Status (0 false, 1 true)" style="margin: 0 0 10px 0;"> -->
+                    </div>
+                   </div>
+                           
+                   <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Pro 1, Total: {{server1DataCountTotal}}, ON: {{server1DataCountOn}}, OFF: {{server1DataCountOff}} </a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pro 2, Total: {{server2DataCountTotal}}, ON: {{server2DataCountOn}}, OFF: {{server2DataCountOff}}</a>
+                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Pro 3, Total: {{server3DataCountTotal}}, ON: {{server3DataCountOn}}, OFF: {{server3DataCountOff}}</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <table class="table table-bordered my-4" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 0px !important;"> <input type="checkbox" class="selectAll"> </th>
+                                    <th width="7%">Market Name</th>
+                                    <th width="7%">Store Name</th>
+                                    <th width="7%">Store UID</th>
+                                    <th width="7%">Store Channel</th>
+                                    <th width="7%">Conf</th>
+                                    <th width="7%">Thresh</th>
+                                    <th width="7%">Status</th>
+                                    <th width="7%">Store Status</th>
+                                   <th width="7%">Action</th>
+    
+                                </tr>
+                            </thead>
+                       
+                            <tbody>
+                                <form method="POST" class="">
+                                
+                                    {% for data in serverprod1Stores %}
+                                        <tr>
+                                            <td> <input type="checkbox" class="selectChild" name="pk" value="{{data.id}}"> </td>
+                                            <td> {{data.market}} </td>
+                                            <td {% if data.status %} style="color: green;" {% else %} style="color: red;" {% endif %} > {{data.store_name}} </td>
+                                            <td> {{data.store_unique_id}} </td>
+                                            <td> {{data.store_channel}} </td>
+                                            <td> {{data.conf}} </td>
+                                            <td> {{data.thresh}} </td>
+                                            <!-- <td> {{data.number_of_snaps}} </td> -->
+                                            <!-- <td> {% if data.device == ' ' %} GPU {% else %} CPU {% endif %} </td> -->
+                                            <td> {{data.current_status}} </td>
+                                            <td> {% if data.status %} ON {% else %} OFF {% endif %} </td>
+                                            <td>
+                                                <a href="{% url 'update_programconfig' pk=data.id %}">Edit</a> | 
+                                                <a href="{% url 'delete_programconfig' pk=data.id %}">Delete</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                               </form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <table class="table table-bordered my-4" id="dataTable1" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 0px !important;"> <input type="checkbox" class="selectAll"> </th>
+                                    <th width="7%">Market Name</th>
+                                    <th width="7%">Store Name</th>
+                                    <th width="7%">Store UID</th>
+                                    <th width="7%">Store Channel</th>
+                                    <th width="7%">Conf</th>
+                                    <th width="7%">Thresh</th>
+                                    <th width="7%">Status</th>
+                                    <th width="7%">Store Status</th>
+                                   <th width="7%">Action</th>
+    
+                                </tr>
+                            </thead>
+                       
+                            <tbody>
+                                <form method="POST" class="">
+                                
+                                    {% for data in serverprod2Stores %}
+                                        <tr>
+                                            <td> <input type="checkbox" class="selectChild" name="pk" value="{{data.id}}"> </td>
+                                            <td> {{data.market}} </td>
+                                            <td {% if data.status %} style="color: green;" {% else %} style="color: red;" {% endif %} > {{data.store_name}} </td>
+                                            <td> {{data.store_unique_id}} </td>
+                                            <td> {{data.store_channel}} </td>
+                                            <td> {{data.conf}} </td>
+                                            <td> {{data.thresh}} </td>
+                                            <!-- <td> {{data.number_of_snaps}} </td> -->
+                                            <!-- <td> {% if data.device == ' ' %} GPU {% else %} CPU {% endif %} </td> -->
+                                            <td> {{data.current_status}} </td>
+                                            <td> {% if data.status %} ON {% else %} OFF {% endif %} </td>
+                                            <td>
+                                                <a href="{% url 'update_programconfig' pk=data.id %}">Edit</a> | 
+                                                <a href="{% url 'delete_programconfig' pk=data.id %}">Delete</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                               </form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <table class="table table-bordered my-4" id="dataTable2" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 0px !important;"> <input type="checkbox" class="selectAll"> </th>
+                                    <th width="7%">Market Name</th>
+                                    <th width="7%">Store Name</th>
+                                    <th width="7%">Store UID</th>
+                                    <th width="7%">Store Channel</th>
+                                    <th width="7%">Conf</th>
+                                    <th width="7%">Thresh</th>
+                                    <th width="7%">Status</th>
+                                    <th width="7%">Store Status</th>
+                                   <th width="7%">Action</th>
+    
+                                </tr>
+                            </thead>
+                       
+                            <tbody>
+                                <form method="POST" class="">
+                                
+                                    {% for data in serverprod3Stores %}
+                                        <tr>
+                                            <td> <input type="checkbox" class="selectChild" name="pk" value="{{data.id}}"> </td>
+                                            <td> {{data.market}} </td>
+                                            <td {% if data.status %} style="color: green;" {% else %} style="color: red;" {% endif %} > {{data.store_name}} </td>
+                                            <td> {{data.store_unique_id}} </td>
+                                            <td> {{data.store_channel}} </td>
+                                            <td> {{data.conf}} </td>
+                                            <td> {{data.thresh}} </td>
+                                            <!-- <td> {{data.number_of_snaps}} </td> -->
+                                            <!-- <td> {% if data.device == ' ' %} GPU {% else %} CPU {% endif %} </td> -->
+                                            <td> {{data.current_status}} </td>
+                                            <td> {% if data.status %} ON {% else %} OFF {% endif %} </td>
+                                            <td>
+                                                <a href="{% url 'update_programconfig' pk=data.id %}">Edit</a> | 
+                                                <a href="{% url 'delete_programconfig' pk=data.id %}">Delete</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                               </form>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+
+
+                    
+                </div>
+            </div>
+        </div>
+   
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        $('.selectAll').change(function(){
+          
+            if($(this).is(':checked')){
+                $('.selectChild').prop('checked',true)
+            }else{
+                $('.selectChild').prop('checked',false)
+            }
+        });
+        $('.add_config_btn').click(function(){
+            
+            if($('.add_config_btn_check').is(':checked')){
+                $('.card-body-hide').addClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',false);
+            }else{
+                $('.card-body-hide').removeClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',true);
+            }
+        });
+
+        setTimeout(()=>{
+            var data = $('table').children('thead').children('tr').children('th');
+            data.prop('style','width:0px !important');
+            data.removeClass('sorting_asc')
+        },500)
+
+    ids = []
+    $('.changeStatusForm').click(function(){
+        ids = []
+       $('.selectChild:checked').each(function(){
+           ids.push(parseInt($(this).val()))
+       });
+       status = $.trim($('.changeStatusBox').children('option:selected').val())
+       
+       //ids = JSON.stringify(ids)
+       console.log(ids)
+       // data = [{'data':ids}]
+       data = JSON.stringify(ids)
+       $.ajax({
+           url: "{% url 'change_statuss' %}",
+           type: 'POST',
+            dataType: "json",
+            headers: {
+                'X-CSRFTOKEN': "{{ csrf_token }}",
+            },
+            data: {'data': data, 'status':status},
+           //contentType: "application/x-www-form-urlencoded/json",
+           //dataType: "json",
+           //headers: {"X-CSRFToken":'{{ csrf_token }}'},
+           //processData: false,
+           //contentType: false,
+           success: function(data){
+               console.log(data)
+               location.reload();
+           },
+           error: function (result) {
+                console.log(result);
+            }
+       });
+    });
+    
+   
+    
+
+    });
+    
+$('#id_market').select2({
+  // ...
+  templateSelection: function (data, container) {
+    // Add custom attributes to the <option> tag for the selected option
+    $(data.element).attr('option', data.customValue);
+    return data.text;
+  }
+});
+
+// Retrieve custom attribute value of the first selected element
+$('#id_market').find(':selected').data('value');
+
+</script>
+{% endblock %}

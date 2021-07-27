@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% block body %} 
+{% include 'info.html' %}
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="post" id="search_form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">Select Market</label>
+                                <select name="" id="market" class="form-control">
+                                    {% for market in market_list %}
+                                        <option value="{{market.pk}}">{{market.market_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">Select Date</label>
+                                <input type="date" name="" id="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label for="date">Search</label> <br>
+                                <input type="submit" value="Go" class="btn btn-primary">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col-xl-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area mr-1"></i>
+                        Total MIS Count (Market wise) <span style="color:red; display: none;" id="count_error"> No Data Found </span>
+                    </div>
+                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="20"></canvas></div>
+                </div>
+            </div>
+            <!-- <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        Count Comparison by conf-thresh
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Total MIS Count (Market & Stores wise)
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Store UID</th>
+                                <th>Store Channel</th>
+                                <th>Total Count</th>
+                                <th>Date</th>
+                                <th>Configuration</th>
+                                <th>Threshold</th>
+                                <th>No of Snaps</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in miscount_data %}
+                            <tr>
+                                <td> {{data.store_uid.store_name}} </td>
+                                <td> {{data.store_uid.store_unique_id}} </td>
+                                <td> {{data.store_uid.store_channel}} </td>
+                                <td> {{data.total_count}} </td>
+                                <td> {{data.date}} </td>
+                                <td> {{data.conf}} </td>
+                                <td> {{data.thresh}} </td>
+                                <td> {{data.number_of_snaps}} </td>
+                               
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> -->
+ 
+{% endblock %}
+{% block js %}
+<script>
+    var now = new Date();
+ 
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(month)+"-"+(day-1) ;
+    $('#date').val(today);
+
+    var names = [];
+    var index = [];
+    var max_value = 0
+    printChart(names, index, max_value)
+
+    $(document).ready(function(){
+        // var date = new Date();
+        // var month = date.getMonth()+1;
+        // var day = date.getDate()-1;
+        // console.log(day);
+        $('#search_form').submit(function(e){
+            e.preventDefault();
+            date = $('#date').val();
+            market = $('#market').children('option:selected').val();
+            names.splice(0, names.length)
+            index.splice(0, index.length)
+            $.ajax({
+                url: '{% url "get_chart" %}',
+                method: 'GET',
+                data: {date:date, market:market},
+                success: function(data){
+                    max_value = data.max_value
+                    
+                    $.each(data.extracted_dat, function(indexs, item){
+                        names.push(item.store_name)
+                        index.push(item.total_count)
+                    })
+                    printChart(names, index, max_value)
+                    if(data.extracted_dat.length<1){
+                        $('#count_error').css('display', 'inline')
+                    }else{
+                        $('#count_error').css('display', 'none')
+
+                    }
+                }
+            });
+            
+        });
+       
+       
+    });
+   
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+// Area Chart Example
+function printChart(names, index, max_value){
+    // console.log(max_value)
+var ctx = document.getElementById("myAreaChart").getContext('2d');;
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: names,
+    datasets: [{
+      label: "Total Count",
+      lineTension: 0.3,
+      backgroundColor: "rgba(2,117,216,0.2)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 20,
+      pointBorderWidth: 5,
+      data: index,
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: true
+        },
+        ticks: {
+          maxTicksLimit: (max_value==0?20:max_value)
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: (max_value==0?20:max_value),
+          maxTicksLimit: (max_value==0?20:max_value)
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: true
+    }
+  }
+});
+}
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+    .card-body-custom {
+            flex: 0 0 auto !important;
+            min-height: 0px !important;
+            padding: 0 !important;
+            height: 0px !important;
+            overflow: hidden !important;
+    }
+    .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    height: auto;
+    transition: 0.5s;
+}
+</style>
+{% endblock %}
+{% block body %}
+{% include 'info.html' %}
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form action="{% url 'importstores' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="my-modal-title"> Select Manual Count file (.csv) </h5>
+                            <button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="file" id="id_manualfile" name="manualfile" class="btn btn-primary">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Upload Data" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+          <div class="alert alert-success alert-dismissible fade show show_success_manual" role="alert" style="display: none;">
+            <strong>Success!</strong> Count has been saved successfully.
+          </div>
+          <div class="alert alert-danger alert-dismissible fade show show_error_manual" role="alert" style="display: none;">
+            <strong>Error!</strong> <span class="error-message"></span> 
+          </div>
+        <div class="card mb-4">
+            <div class="card-header" style="font-size:20px;">
+                <i class="fas fa-table mr-1"></i>
+                Add Manual Count
+                <span><a href="{% url 'exportmanual' %}"> Export All Manual Count </a></span> |
+                <span><a href="{% url 'importmanual' %}" onclick="event.preventDefault();"  data-toggle="modal" data-target="#my-modal">Import All Manual Count</a></span>
+                <span style="float: right; cursor: pointer;" class="add_config_btn btn btn-primary">Add New  <input type="checkbox" style="display: none;" class="add_config_btn_check"></span>
+            </div>
+            <div class="card-body card-body-hide  {% if not form.errors and not edit_form %} card-body-custom {% endif %}">
+                
+                <form action="" method="post" novalidate id="addManualCountForm">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{form.market|as_crispy_field}}
+                            <p id="error_id_market" style="display: none;"><strong>This field is required.</strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            <span style="display: none;">{{edit_form}}</span>
+                            {{form.store_name|as_crispy_field}}
+                            <p id="error_id_store_name" style="display: none;"><strong>This field is required.</strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            {{form.date|as_crispy_field}}
+                            <p id="error_id_date" style="display: none;"><strong>This field is required.</strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            {{form.count|as_crispy_field}}
+                            <p id="error_id_count" style="display: none;"><strong>This field is required.</strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <input type="submit" value=""> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                List of Cams Configuration 
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="7%">Market Name</th>
+                                <th width="7%">Store Name</th>
+                                <th width="7%">Date</th>
+                                <th width="7%">Total Count</th>
+                               <th width="7%">Action</th>
+
+                            </tr>
+                        </thead>
+                   
+                        <tbody>
+                            {% for data in manual_data %}
+                            <tr>
+                                <td> {{data.market}} </td>
+                                <td> {{data.store_name}} </td>
+                                <td> {{data.date}} </td>
+                                <td> {{data.count}}</td>
+                                <td>
+                                    <a href="{% url 'update_manual' pk=data.pk %}">Edit</a> | 
+                                    <a href="{% url 'delete_manual' pk=data.pk %}">Delete</a>
+                                </td>
+                            </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+   
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+
+        $('#addManualCountForm').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: '{% url "create_manual" %}',
+                data: $(this).serialize(),
+                type: 'POST',
+                success: function(data){
+                    
+                   if(data.status=='error'){
+                       
+                        if(data.error.__all__ !=undefined){
+                            $('.show_error_manual').show(100);
+                            $('.error-message').text(data.error.__all__)
+                        }else{
+                            $('.show_error_manual').hide(100);
+                            $('.error-message').text('')
+                        }
+                       fields = {'market':'','store_name':'','date':'','count':''}
+                       for(var field in fields){
+                            $('#error_id_'+field+'').css({'display':'none', 'color': 'red'});
+                            for (var key in data.error){                                 
+                                if(key in fields){
+                                    $('#error_id_'+key+'').css({'display':'block', 'color': 'red'});
+
+                                }
+                            }
+                       }
+                   }else{
+                        
+                        fields = {'market':'','store_name':'','date':'','count':''}
+                        for(var field in fields){
+                            $('#error_id_'+field+'').css({'display':'none', 'color': 'red'});
+                        }
+
+                        $('.show_error_manual').hide(100);
+                        $('.error-message').text('')
+                        $('#error_id_'+field+'').css({'display':'none', 'color': 'red'});
+                        $('.show_success_manual').show(100);
+
+                        $('#id_count').val('')
+                        setTimeout(function(){
+                            $('.show_success_manual').hide(100);
+                            
+                            }, 2000)
+                   }
+                }
+            })
+        })
+
+
+        $('#id_market').change(function(){
+            marketid = $(this).children('option:selected').val();
+            $.ajax({
+                url: '{% url "getstorebymarket" %}',
+                type: 'GET',
+                data: {marketid: marketid},
+                success: function(data){
+                    console.log(data);
+                    stores = []
+
+                    $.each(data.StoresByMarket, function(index, item){
+                        stores.push('<option value="'+item.pk+'">'+item.store_name+'</option>')
+                        console.log(item.store_name)
+                    })
+
+                    $('#id_store_name').html(stores)
+                }
+            });
+        })
+
+        // CONTROLL ADD NEW SCROLL BUTTON
+        $('.add_config_btn').click(function(){
+            
+            if($('.add_config_btn_check').is(':checked')){
+                $('.card-body-hide').addClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',false);
+            }else{
+                $('.card-body-hide').removeClass('card-body-custom');
+                $('.add_config_btn_check').prop('checked',true);
+            }
+        });
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear()+"-"+(month)+"-"+(day-1) ;
+        $('#id_date').val(today);
+    });
+</script>
+{% endblock %}

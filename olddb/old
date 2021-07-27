@@ -1,0 +1,252 @@
+id,store_name,store_unique_id,store_channel,conf,thresh,snaps_path,number_of_snaps,hourly_api,total_api,device,time,date,market_id,status,current_status_id
+223,2nd Ave,70144842,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,22,1,3
+224,Lanett,70144979,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-02,22,1,2
+225,Phenix City,70144961,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-02,22,1,5
+226,Schillinger,70144820,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,22,1,4
+227,Plaza Road,70160670,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,3,1,5
+228,Westgate Plaza,70144446,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,3,1,5
+229,Algon,70144854,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,32,0,5
+230,Heber Springs,70144948,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,4,1,3
+231,Mountain Home,70144945,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,4,1,3
+232,Newport,70153479,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-24,4,1,2
+233,West Helena,70144949,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,5,1,5
+234,Burton,70145273,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,13,0,4
+235,Manchaca,70145668,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,13,0,2
+236,Oltorf,70145667,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,13,1,5
+237,San Marcos,70145673,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,13,1,5
+238,Durham,70158267,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,24,1,3
+239,Algonquin Rd,70144864,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,14,1,5
+240,Archer,70155322,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,14,1,4
+241,Franklin Park,70144928,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,14,1,4
+242,Hanson,70144870,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,14,1,5
+243,Round Lake,70155610,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,14,1,5
+244,Cranston,70144784,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,6,1,5
+245,Grand Ave,70144768,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,6,1,3
+246,Hamden,70144508,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,6,0,5
+247,Mattoon,70144890,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,29,1,5
+248,N Prospect Ave,70144896,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,29,1,5
+249,Urbana,70155616,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,29,1,5
+250,Woodlawn,70144831,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,29,1,3
+251,Crawfordsville,70144536,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,19,0,3
+252,Crest Hill,70144866,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,15,1,4
+253,Homewood,70144867,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,15,1,5
+254,Nick Plaza,70144869,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,15,1,5
+255,E Rancier,70145382,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,7,1,3
+256,Gatesville,70145646,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,7,1,5
+257,Stan Schlueter,70145664,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-24,7,1,2
+258,Bristol,70164772,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,9,1,3
+259,Hwy 215,70164628,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,9,1,3
+260,Natchitoches,70144852,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-24,12,1,2
+261,Pineville,70144692,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,12,1,4
+262,Texarkana,70153404,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-24,12,1,2
+263,Merritt Blvd,70144859,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,26,1,2
+264,Point Blvd,70144860,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,26,1,2
+265,Silver Hill,70144857,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,26,1,4
+266,Wheaton,70144930,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,26,1,3
+267,Dover,70162750,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,4
+268,DuPont,70162749,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,2
+269,Fruitland,70144879,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,2
+270,Salisbury,70144675,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,3
+271,Sussex Hwy,70162751,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,3
+272,Hwy 82,70164590,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,11,0,4
+273,Indianola,70164653,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,11,1,5
+274,Jonesboro,70164415,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,11,1,5
+275,Lamar Ave,70164425,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,11,1,3
+276,New Albany,70164780,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,11,1,2
+277,Perry,70144721,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,17,1,4
+278,65th Street,70144773,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,20,0,5
+279,Barberton,70144776,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,20,0,5
+280,Copley,70144774,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-02,20,1,4
+281,Cromer,70144775,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-02,20,1,5
+282,Medina,70144769,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,20,0,5
+283,Stow,70144800,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-17,20,0,5
+284,Wadsworth,70144802,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,20,0,5
+285,Lawndale,70144343,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,18,1,4
+286,Monroe,70144809,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,18,0,4
+287,Uvalde,70144329,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,18,1,2
+288,Gessner,70144334,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,23,1,4
+289,Rosenberg,70144822,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,23,1,5
+290,Westheimer Commons,70144974,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,23,1,5
+291,Edinburg,70164779,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,27,1,3
+292,F st,70164768,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,27,1,3
+293,S Jackson Rd Ste 8,70164777,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,27,1,5
+294,Sunshine Strip,70164769,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,27,1,2
+295,Bluefield,70144958,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,30,1,2
+296,Dudley Farms,70144693,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,30,1,5
+297,Lewisburg,70144709,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,30,1,5
+298,Princeton,70144750,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,30,1,5
+299,Riverwalk,70144703,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,30,1,5
+300,Edwin Miller,70144863,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,31,1,2
+301,Fairmont,70144849,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,31,1,5
+302,National Hwy,70144855,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,31,1,5
+303,Georgetown,70162748,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-02-25,10,1,3
+304,Air Depot,70143279,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,33,1,2
+305,Baraboo,70144893,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,34,1,2
+306,Battle Creek,70144971,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,35,1,2
+307,Breaux Bridge,70144668,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,37,1,2
+308,Brooklyn,70144701,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,6,1,2
+309,Cermak Rd,70144868,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,14,1,2
+310,Charleston,70159340,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,38,1,2
+311,Circleville,70144826,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,21,1,2
+312,Desert Inn,70159759,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,39,1,2
+313,E Expressway,70164765,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,27,1,2
+314,E Griffin,70164766,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,27,1,2
+315,Elkhart,70144844,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,15,1,2
+316,Elyria,70144779,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,20,0,2
+317,Empire Plaza,70163383,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,40,1,2
+318,Escanaba,70144651,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,41,1,2
+319,Essex,70144877,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,26,1,2
+320,Fort Smith,70153478,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,4,0,2
+321,Forum,70152287,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,42,1,2
+322,Gallatin Pike,70164716,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,43,1,2
+323,Geyer Springs,70153358,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,5,1,2
+324,Hartford,70144894,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,36,0,2
+325,Hitchcock,70144737,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,18,1,2
+326,Howard,70155291,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,14,1,2
+327,Hudson,70144481,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,3,1,2
+328,Hwy 93,70144794,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,21,1,2
+329,Inkster,70144921,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,44,1,2
+330,Jackson Ave,70164294,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,11,1,2
+331,KEMP,70144472,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,45,1,2
+332,Macomb,70155615,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,46,1,2
+333,Mentor Ave,70144788,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,20,0,2
+334,Minocqua,70144904,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,41,1,2
+335,Murfreesboro,70164650,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,43,1,2
+336,Nellis Blvd,70159756,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,39,1,2
+337,Oshkosh,70144429,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,34,1,2
+338,Park Center,70164759,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,47,1,2
+339,Perkins Rd,70164421,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,11,1,2
+340,Perrin Beitel,70152355,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,42,1,2
+341,Petoskey,70144696,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,48,1,2
+342,Pleasanton Rd,70152261,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,49,1,2
+343,Poteet,70152607,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,49,1,2
+344,River Valley,70144990,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,21,1,2
+345,Robinson Rd,70153297,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,4,1,2
+346,Saratoga,70150332,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,50,0,2
+347,Shawano Dr,70144765,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,34,1,2
+348,Silas Creek,70158742,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,25,1,2
+349,Simmons Plaza,70159761,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,38,1,2
+350,South Ave,70163249,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,40,0,2
+351,State St,70144444,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,3,0,2
+352,Tarboro,70158678,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,51,1,2
+353,Taylorsville,70158686,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,25,1,2
+354,Tradewinds,70164757,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,47,1,2
+355,Traverse City,70144596,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,48,1,2
+356,Troy,70144443,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-15,3,1,2
+357,Upper Darby,70162482,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,52,1,2
+358,"Weslaco, TX",70164767,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,27,1,2
+359,West Lafayette,70144702,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,19,0,2
+360,White Road,70152263,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,1,1,1, ,9,2021-05-20,42,1,2
+361,Wichita Falls,70144431,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,45,1,2
+362,Williamston,70158683,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,51,0,2
+363,Willow Springs,70145380,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,7,0,2
+364,Wilson,70144467,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,51,0,2
+365,Beaver Dam,70144956,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-03-30,36,1,2
+366,Mount Airy,70144944,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,25,0,2
+367,Kissimmee,70144523,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,54,1,2
+368,West Memphis,70164424,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,11,1,2
+369,Potranco,70152363,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,49,1,2
+370,Eastern Village,70161253,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,55,1,2
+371,Ridge Rd,70160346,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,40,1,2
+372,Trumann,70164783,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,11,1,2
+373,Tomah,70144895,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,56,1,2
+374,Greenwood,70150265,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,50,1,2
+375,Bandera,70152327,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,49,1,2
+376,North Freeway,70144537,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,17,1,2
+377,Greece,70160669,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-14,40,1,2
+378,Penn 39,70143301,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,57,0,2
+379,Research Blvd,70145257,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,58,1,2
+380,Westernview,70143680,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,57,0,2
+381,Villa Ave,70143701,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,57,1,2
+382,Dallas 2 (Lancaster),70144970,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,45,1,2
+383,Airline,70144326,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,17,1,2
+384,Beloit,70144977,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,59,0,2
+385,Madison,70144976,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,59,1,2
+386,Freeport,70144975,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,59,1,2
+387,Fern Park,70144965,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,60,1,2
+388,Vernor,70144966,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,35,1,2
+389,Boca Chica,70164784,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,27,1,2
+390,Viadelmar,70164782,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,62,1,2
+391,Hwy 58,70164778,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,16,1,2
+392,HWY 159,70164764,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,46,1,2
+393,Schnuck's Plaza,70164763,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,46,0,2
+394,Neenah,70144434,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,63,0,2
+395,Chippewa,70164761,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,46,1,2
+396,Naomi Dr,70164758,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,47,1,2
+397,Mason,70144435,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,63,1,2
+398,Hazelwood,70164756,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,47,1,2
+399,Southland,70164755,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,47,0,2
+400,Melrose,70144448,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,45,1,2
+401,Old Hickory,70164749,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,43,0,2
+402,Clarksville,70164713,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,47,1,2
+403,Fond Du Lac,70144449,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,63,1,2
+404,Amarillo,70144456,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,45,1,2
+405,Mansfield,70144466,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,12,1,2
+406,Beckley,70144493,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,30,1,2
+407,New Haven,70144511,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,6,1,2
+408,North Blvd,70144655,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,12,0,2
+409,New London,70144662,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,41,0,2
+410,Clinton Hwy,70164618,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,9,1,2
+411,Cleveland,70164304,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,11,1,2
+412,Burgess,70162270,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,52,1,2
+413,Marquette,70144708,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,41,1,2
+414,Orleans ST,70161347,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,55,1,2
+415,Menomonie,70144812,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,56,0,2
+416,Stewart Ave,70159757,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,64,1,2
+417,Iron Mountain,70144814,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,41,0,2
+418,Lake Plaza,70159755,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,64,1,2
+419,Craig Road,70159754,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,64,1,2
+420,Goshen,70144815,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,15,1,2
+421,Lakemead,70159285,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,64,1,2
+422,Saint Stephens,70144817,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,22,1,2
+423,Theodore,70144821,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,22,1,2
+424,Crossroad,70158271,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,65,0,2
+425,Brickyard,70155611,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,65,0,2
+426,Armitage,70155303,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,65,1,2
+427,Searcy,70153480,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,4,1,2
+428,Quincy,70144832,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,66,0,2
+429,Kyle,70145593,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-04-20,58,1,2
+430,Norman,70143375,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,57,1,2
+431,Del City,70143602,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,57,1,2
+432,Enid,70143699,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,57,1,2
+433,61st ST,70144283,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,17,1,2
+434,Tidewater,70144378,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,67,0,2
+435,Abilene,70144436,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,45,1,2
+436,Gulfport,70144464,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,68,0,2
+437,Evangeline,70144485,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,69,1,2
+438,Hammond,70144488,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,69,0,2
+439,Catclaw,70144515,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,45,0,2
+440,Texas Blvd,70144517,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,12,0,2
+441,Kanawha City,70144533,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,70,0,2
+442,Decatur,70144542,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,29,0,2
+443,Fairview Square,70144752,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,72,1,2
+444,Columbus,70144543,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,71,1,2
+445,Vernon,70144611,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,45,1,2
+446,Gaylord,70144621,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,72,1,2
+447,Marinette,70144644,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,41,0,2
+448,Tillmans Corner,70144645,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,22,0,2
+449,Pass Rd,70144654,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,68,1,2
+450,Breckenridge,70144666,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,45,1,2
+451,Richmond,70144738,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,73,1,2
+452,West Hartford,70144667,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,74,1,2
+453,North Versailles,70144732,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,75,1,2
+454,Saginaw,70144698,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,72,1,2
+455,Hardee Crossing,70144672,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,76,1,2
+456,Rhinelander,70144697,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,41,1,2
+457,Houghton,70144674,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,77,1,2
+458,Wilmington,70144718,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,52,1,2
+459,Wilkinsburg,70144735,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-04,75,1,2
+460,Conroe,70144247,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,73,1,2
+461,Galveston,70144282,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-24,73,1,2
+462,San Angelo East,70144447,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,45,1,2
+463,Park Lane,70144518,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,55,1,2
+464,31st St,70144535,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,55,1,2
+465,Childress,70144629,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,45,1,2
+466,Highway 49,70144687,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,68,1,2
+467,North First,70144707,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-12,45,1,2
+468,Forrest City,70144947,4,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-17,4,1,2
+469,Grandville,70144963,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-17,72,1,2
+470,Michigan City,70144798,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-17,15,1,2
+471,Belmont,70155328,3,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-18,79,1,2
+472,Braker Ln,70145243,2,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-18,58,1,2
+473,Brownsville,70164776,1,25,45,/media/live/livedb/cams/Compliefile/C:/Store_Cam_picture/,6,1,1, ,9,2021-05-18,27,1,2

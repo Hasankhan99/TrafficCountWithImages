@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Dashboard</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+
+        <div class="row">
+            {% for task in taskList %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="white-space: nowrap;text-overflow: ellipsis;    overflow: hidden;"> {{task.project_name}} </h3>
+                        </div>
+                        <div class="card-body">
+                            <label for="file">Current Status: <br><strong>{{task.status}}</strong></label>
+                            <progress id="file" value="{{task.progress}}" max="100"> {{task.project_name.status}% </progress>
+                            <p> Please Accept to view detail </p>
+                            
+                            {% if task.status == '0' %}
+                                <a href="{% url 'ar_task' pk=task.pk %}" class="btn btn-primary">Accept</a>
+                                
+                            {% else %}
+                                <a href="{% url 'taskdetail' pk=task.project_name.pk %}">View detail</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

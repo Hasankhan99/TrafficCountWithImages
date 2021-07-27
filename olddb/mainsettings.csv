@@ -1,0 +1,2 @@
+id,date_for_all_store,path_for_all_store,device,source_weight,hourly_api_for_all_store_live,total_api_for_all_store_live,api_for_all_store_local,is_system_date
+1,2021-05-22,/media/shared53/,,yolov5s.pt,1,0,0,1

@@ -1,0 +1,566 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+#canvases .col-md-3 {
+    margin-top: 15px;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+{% include 'storeInfoformisreport.html' %}
+<div class="row">
+    <div class="col-md-12">
+        <form action="" method="post" id="search_form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="date">Select Market</label>
+                        <select name="" id="market" class="form-control">
+                            {% for market in market_list %}
+                            <option value="{{market.pk}}">{{market.market_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="date" id="startdate_lbl">Select Month Prev</label>
+                        <input type="month" name="" id="startdate" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="date" id="enddate_lbl">Select Month Next</label>
+                        <input type="month" name="" id="enddate" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="status">Daily Comparison</label> <br>
+                        <input type="checkbox" name="" id="dailycomparison">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="date">Search</label> <br>
+                        <!-- <input type="submit" value="Go" class="btn btn-primary"> -->
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-area mr-1"></i>
+                Total Store MIS Count (Previous Month Data) <span style="color:red; display: none;" id="count_error1">
+                    No Data Found </span>
+            </div>
+            <div class="card-body">
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-area mr-1"></i>
+                Total Store MIS Count (Next Month Data) <span style="color:red; display: none;" id="count_error2"> No
+                    Data Found </span>
+            </div>
+            <div class="card-body">
+                <canvas id="myChart1" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-bar mr-1"></i>
+                Count Comparison by conf-thresh
+            </div>
+            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+        </div>
+    </div> -->
+</div>
+
+
+<div class="card mb-4" id="accuracyModel" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-chart-area mr-1"></i>
+            Stores accuracy
+        </div>
+    </div>
+    <div class="row" id="canvases" style="padding: 10px;">
+                
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-chart-area mr-1"></i>
+            Stores Status as accurated
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                <p> 
+                    <span style="width:20px; height: 5; background-color: #e66c79;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> &nbsp;Accurate Stores <br>
+                    <span style="width:20px; height: 5; background-color: #8ad2be;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> &nbsp;Accurate but not consistent <br>
+                    <span style="width:20px; height: 5; background-color: #dea871a1;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> &nbsp;Accurate but still camera angle issue <br>
+                    <span style="width:20px; height: 5; background-color: #95c7e4cc;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> &nbsp; Inaccurate due to camera angle <br>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <canvas id="storeAccuracy" width="400" height="200"></canvas>
+            </div>     
+        </div>
+    </div>
+</div>
+
+{% endblock %}{% block js %}
+
+<script>
+
+    var misCount = [];
+    var manCount = [];
+    var labels_start = [];
+    var counts_start = [];
+    var labels_end = [];
+    var counts_end = [];
+    var canvases = []
+    var elementBodyCanvas = document.getElementById('canvases');
+    var status = 'Monthly Comparison';
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx2 = document.getElementById('myChart1').getContext('2d');
+    Chart_compare(ctx, labels_start, counts_start, status);
+    Chart_compare(ctx2, labels_end, counts_end, status);
+
+    $(document).ready(function () {
+        $('#dailycomparison').change(function () {
+            if ($(this).is(':checked')) {
+                $('#startdate_lbl').text('Select Date Prev')
+                $('#startdate').prop('type', 'date')
+                $('#enddate_lbl').text('Select Date Next')
+                $('#enddate').prop('type', 'date')
+            } else {
+                $('#startdate_lbl').text('Select Month Prev')
+                $('#startdate').prop('type', 'month')
+                $('#enddate_lbl').text('Select Month Next')
+                $('#enddate').prop('type', 'month')
+            }
+        })
+        $('#search_form').submit(function (e) {
+            e.preventDefault();
+            marketId = $('#market').children('option:selected').val();
+            startdate = $('#startdate').val();
+            enddate = $('#enddate').val();
+            // alert(enddate)
+            labels_start.splice(0, labels_start.length);
+            counts_start.splice(0, counts_start.length);
+            labels_end.splice(0, labels_end.length);
+            counts_end.splice(0, counts_end.length);
+            canvases.splice(0, canvases.length);
+            misCount.splice(0, misCount.length);
+            manCount.splice(0, manCount.length);
+            $.ajax({
+                url: '{% url "get_chart_month_compare" %}',
+                type: 'GET',
+                data: { startdate: startdate, enddate: enddate, marketId: marketId },
+                success: function (data) {
+                    // console.log(data)
+                    $.each(data.extracted_data_start, function (indexs, item) {
+                        labels_start.push(item.store_name)
+                        counts_start.push(item.total_count)
+                    })
+                    $.each(data.extracted_data_end, function (indexs, item) {
+                        labels_end.push(item.store_name)
+                        counts_end.push(item.total_count)
+                    })
+                    status = data.status
+                    // printChart(names, index, max_value)                    
+
+                    Chart_compare(ctx, labels_start, counts_start, status);
+                    Chart_compare(ctx2, labels_end, counts_end, status);
+
+                    if (data.extracted_data_start.length < 1) {
+                        $('#count_error1').css('display', 'inline')
+                    } else {
+                        $('#count_error1').css('display', 'none')
+
+                    }
+                    if (data.extracted_data_end.length < 1) {
+                        $('#count_error2').css('display', 'inline')
+                    } else {
+                        $('#count_error2').css('display', 'none')
+
+                    }
+                    $('#accuracyModel').show();
+                    $('#canvases').children('div').remove();
+                    $.each(data.extracted_data_end, function (i, item){
+                        // $('#'+item.store_name).remove();
+                        canvas = '<div class="col-md-3">'
+                                    +'<p style="background: #e7e4ea; text-align: center;">'+item.store_name+'</p>'
+                                     +'<canvas id="'+item.store_name+'" width="200" height="100"></canvas>'
+                                     +'</div>';
+                        $('#canvases').append(canvas)
+                    })
+                    elementBodyCanvas.html=canvases;
+                    $.each(data.extracted_data_end, function (i, item){
+                        getPie(item.store_name, item.total_count, item.manual_count);
+                    });
+                }
+            })
+        })
+
+    })
+    function getPie(elementId, misCount, manualCount){
+
+        manualCount = parseInt(manualCount<1?1:manualCount);
+        misCount = parseInt(misCount<1?1:misCount);
+        var accure = ((manualCount/misCount)*100);
+        var off = 0;
+        
+        console.log('Manual: '+manualCount+'- Mis: '+misCount+ '=' +accure)
+        if(manualCount>misCount && misCount>1 && manualCount>1){
+            off = Math.ceil(accure-100);
+            accure = Math.ceil(100-off);
+            
+        }else if(manualCount<misCount && misCount>1 && manualCount>1){
+            off = Math.ceil(100-accure);
+            accure = Math.ceil(accure);
+        }
+        // else if((misCount<2 && manualCount>1) || manualCount>misCount && misCount>1 && manualCount<1 ){
+        //     off = 100;
+        //     accure = 0;
+        // }
+        else{
+
+            off = 100;
+            accure = 0;
+        }
+        
+   
+        ctxPie = document.getElementById(elementId).getContext("2d")
+        new Chart(ctxPie, { 
+            type: "doughnut", "data": 
+            { 
+                labels: ["None Accurated","Accurated"],
+                datasets: 
+                [
+                    { 
+                        label: "sdasds",
+                        data: [off, accure ],
+                        backgroundColor:[
+                            "#e66c79",                            
+                            "#8ad2be",
+                        ] 
+                    }
+                ]                 
+            }, 
+        });
+    }
+
+// START STORES ACCURATED OR NOT
+var storeAccuracy = document.getElementById('storeAccuracy').getContext('2d');
+// ctxPie = document.getElementById(ctx).getContext("2d")
+    new Chart(storeAccuracy, { 
+            type: "doughnut", "data": 
+            { 
+                labels: ["Status 1","Status 2","Status 3","Status 4"],
+                datasets: 
+                [
+                    { 
+                        label: "sdasds",
+                        data: ['{{totalAccurated}}', '{{accurateButNotConsistent}}','{{accurateButStillCameraIssue}}','{{NotAccurateduetoCameraangle}}' ],
+                        backgroundColor:[
+                            "#e66c79",                            
+                            "#8ad2be",
+                            "#dea871a1",
+                            "#95c7e4cc",
+                        ] 
+                    }
+                ]                 
+            }, 
+        });
+    // Chart_compare(ctx2, ['store 1','store 2', 'store 3'], [7,10,4]);
+
+    function Chart_compare(vars, labels, counts, status) {
+        var myChart = new Chart(vars, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: status,
+                    data: counts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+// var ctx = document.getElementById('myChart');
+// var timeFormat = 'HH';
+
+//  function getCurrentDate(days){
+//     var now = new Date(); 
+//     var day = ("0" + now.getDate()).slice(-2);
+//     var month = ("0" + (now.getMonth() + 1)).slice(-2);
+//     var today = now.getFullYear()+"-"+(month)+"-"+(day-days) ;
+//      return today
+//  }
+
+// function newDate(days) {
+//     return moment().add(days, 'd').toDate();
+// }
+
+// function newDateString(days) {
+//     return moment().add(days, 'd').format(timeFormat);
+//     console.load(newDate(0))
+// }
+// console.log(newDate(0))
+// console.log(new Date())
+// var color = Chart.helpers.color;
+// var config = {
+//     type: 'line',
+//     data: {
+//         labels: [ // Date Objects
+//         // newDate(0),
+//         // newDate(1)
+//            '09','24'
+//             // '12',
+//             // '13',
+//             // '14',
+//             // '15',
+//             // '16',
+//             // '17',
+//             // '18',
+//             // '19',
+//             // '20',
+//             // '21',
+//             // '22',
+//             // '23',
+//             // '24'
+//         ],
+//         datasets: [{
+//             label: 'Uvalde (Total 10)',
+//             backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+//             borderColor: window.chartColors.red,
+//             fill: false,
+//             data: [
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//                 randomScalingFactor(),
+//             ],
+//         }, 
+//     ]
+//     },
+//     options: {
+//         title: {
+//             text: 'Chart.js Time Scale'
+//         },
+//         scales: {
+//             xAxes: [{
+//                 type: 'time',
+//                 time: {
+//                     // displayFormats: {
+//                     //     quarter: 'D'
+//                     // }
+//                     parser: timeFormat,
+//                     round: 'day',
+//                     tooltipFormat: 'MMM D'
+//                 },
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Date'
+//                 }
+//             }],
+//             yAxes: [{
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'value'
+//                 }
+//             }]
+//         },
+//     }
+// };
+
+// window.onload = function() {
+//     var ctx = document.getElementById('myChart').getContext('2d');
+//     window.myLine = new Chart(ctx, config);
+
+// };
+
+// document.getElementById('randomizeData').addEventListener('click', function() {
+//     config.data.datasets.forEach(function(dataset) {
+//         dataset.data.forEach(function(dataObj, j) {
+//             if (typeof dataObj === 'object') {
+//                 dataObj.y = randomScalingFactor();
+//             } else {
+//                 dataset.data[j] = randomScalingFactor();
+//             }
+//         });
+//     });
+//     window.myLine.update();
+// });
+
+// var colorNames = Object.keys(window.chartColors);
+// document.getElementById('addDataset').addEventListener('click', function() {
+//     var colorName = colorNames[config.data.datasets.length % colorNames.length];
+//     var newColor = window.chartColors[colorName];
+//     var newDataset = {
+//         label: 'Dataset ' + config.data.datasets.length,
+//         borderColor: newColor,
+//         backgroundColor: color(newColor).alpha(0.5).rgbString(),
+//         data: [],
+//     };
+
+//     for (var index = 0; index < config.data.labels.length; ++index) {
+//         newDataset.data.push(randomScalingFactor());
+//     }
+
+//     config.data.datasets.push(newDataset);
+//     window.myLine.update();
+// });
+
+// document.getElementById('addData').addEventListener('click', function() {
+//     if (config.data.datasets.length > 0) {
+//         config.data.labels.push(newDate(config.data.labels.length));
+
+//         for (var index = 0; index < config.data.datasets.length; ++index) {
+//             if (typeof config.data.datasets[index].data[0] === 'object') {
+//                 config.data.datasets[index].data.push({
+//                     x: newDate(config.data.datasets[index].data.length),
+//                     y: randomScalingFactor(),
+//                 });
+//             } else {
+//                 config.data.datasets[index].data.push(randomScalingFactor());
+//             }
+//         }
+
+//         window.myLine.update();
+//     }
+// });
+
+// document.getElementById('removeDataset').addEventListener('click', function() {
+//     config.data.datasets.splice(0, 1);
+//     window.myLine.update();
+// });
+
+// document.getElementById('removeData').addEventListener('click', function() {
+//     config.data.labels.splice(-1, 1); // remove the label first
+
+//     config.data.datasets.forEach(function(dataset) {
+//         dataset.data.pop();
+//     });
+
+//     window.myLine.update();
+// });
+</script>
+<script>
+
+    // var chart = new Chart(ctx, {
+    //     type: 'line',
+    //     data: [{
+    //     x: new Date(),
+    //     y: 1
+    // }, {
+    //     t: new Date(),
+    //     y: 10
+    // }],
+    //     options: {
+    //         scales: {
+    //             xAxes: [{
+    //                 type: 'time',
+    //                 time: {
+    //                     displayFormats: {
+    //                         quarter: 'HH'
+    //                     }
+    //                 }
+    //             }]
+    //         }
+    //     }
+    // });
+    // var myChart = new Chart(ctx, {
+    //     type: 'line',
+    //     data: [
+    //            1,4,66,2  
+    //     ],
+    //     options: {
+    //         scales: {
+    //             xAxes: [{
+    //                 type: 'time',
+    //                 time: {
+    //                     displayFormats: {
+    //                         quarter: 'MMM YYYY'
+    //                     }
+    //                 }
+    //             }]
+    //         }
+    //     }
+    // });
+    
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".selectone").change(function () {
+            if ($(this).is(':checked')) {
+                $('.selectall').prop('checked', true);
+            } else {
+                $('.selectall').prop('checked', false);
+            }
+        })
+
+    })
+</script>
+{% endblock %}

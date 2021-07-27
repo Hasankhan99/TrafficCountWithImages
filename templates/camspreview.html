@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<main>
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Select Market</label>
+                    <select name="" id="" class="form-control">
+                        <option value="">Select Market</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Select Store</label>
+                    <select name="" id="" class="form-control">
+                        <option value="">Select Store</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Select Store</label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="wrap my-4" style="margin-top: 32px !important;">
+                    <div class="btn-group wrapper">
+                        <input type="submit" value="Start" id="btnstart" onclick="OncallChangeImage(this.id)" class="btn btn-primary">
+                        <input type="submit" value="<<" id="btnpervious" onclick="OncallChangeImage(this.id)" class="btn btn-primary">
+                        <input type="submit" value=">>" id="btnnext" onclick="OncallChangeImage(this.id)" class="btn btn-primary">
+                        <input type="submit" value="End" id="btnend" onclick="OncallChangeImage(this.id)" class="btn btn-primary">                          
+                    </div>        
+                </div>                
+            </div>
+        </div>  
+       
+        <div class="row">
+            
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Cams Preview {{ MEDIA_URL }}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="padding:10px;">
+                            <img src="70143279/1/20210323/2021_03_23%2008_43.jpg" width="100%" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="padding:10px;">
+                            <img src="file:///run/user/1002/gvfs/smb-share:server=10.0.0.53,share=store_cams_picture/70143279/1/20210323/2021_03_23%2008_43.jpg" width="100%" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card" style="padding:10px;">
+                            <img src="{% static 'ml.jpg' %}" width="100%" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="padding:10px;">
+                            <img src="{% static 'ml.jpg' %}" width="100%" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="show_image('file:///run/user/1002/gvfs/smb-share:server=10.0.0.53,share=store_cams_picture/70143279/1/20210323/2021_03_23%2008_43.jpg',276,110,'Google Logo');">Add Google Logo</button> 
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+
+setTimeout(()=>{
+$('#topheading').hide();
+
+}, 0);
+})
+
+function show_image(src, width, height, alt) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+
+    // This next line will just add it to the <body> tag
+    document.body.appendChild(img);
+}
+</script>
+
+{% endblock %}
